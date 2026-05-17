@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
+import { supabase } from "@/lib/supabase";
 
 const topics = [
   "General question",
@@ -12,6 +13,8 @@ const topics = [
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -22,9 +25,18 @@ export default function ContactForm() {
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
 
-  const handleSubmit = () => {
-    // Placeholder handler — wire to an email service or API route in production.
+  const handleSubmit = async () => {
     if (!form.name || !form.email || !form.message) return;
+    setLoading(true);
+    setError(null);
+    const { error: dbError } = await supabase
+      .from("contact_submissions")
+      .insert({ name: form.name, email: form.email, topic: form.topic, message: form.message });
+    setLoading(false);
+    if (dbError) {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
     setSent(true);
   };
 
@@ -101,13 +113,17 @@ export default function ContactForm() {
         />
       </label>
 
-      <button onClick={handleSubmit} className="btn-primary mt-5 w-full sm:w-auto">
-        Send message
+      {error && (
+        <p className="mt-3 text-sm text-red-600">{error}</p>
+      )}
+
+      <button
+        onClick={handleSubmit}
+        disabled={loading}
+        className="btn-primary mt-5 w-full sm:w-auto disabled:opacity-60"
+      >
+        {loading ? "Sending…" : "Send message"}
       </button>
-      <p className="mt-3 text-xs text-brand-slate">
-        This is a demo form. In production it would connect to an email service
-        or CRM. We never share your details.
-      </p>
     </div>
   );
 }

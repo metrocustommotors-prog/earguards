@@ -2,16 +2,28 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
+import { supabase } from "@/lib/supabase";
 
 // variant: "panel" (full section) | "inline" (compact card)
 export default function NewsletterSignup({ variant = "panel" }) {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!email.includes("@")) return;
-    // Wire to your ESP (Mailchimp, ConvertKit, Beehiiv) here.
+    setLoading(true);
+    setError(null);
+    const { error: dbError } = await supabase
+      .from("newsletter_subscribers")
+      .upsert({ email }, { onConflict: "email", ignoreDuplicates: true });
+    setLoading(false);
+    if (dbError) {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
     setDone(true);
   };
 
@@ -39,11 +51,12 @@ export default function NewsletterSignup({ variant = "panel" }) {
               placeholder="your@email.com"
               className="w-full rounded-lg border border-brand-line bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-blue"
             />
-            <button type="submit" className="btn-primary !px-4 !py-2.5 text-sm">
-              Subscribe
+            <button type="submit" disabled={loading} className="btn-primary !px-4 !py-2.5 text-sm disabled:opacity-60">
+              {loading ? "…" : "Subscribe"}
             </button>
           </form>
         )}
+        {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
       </div>
     );
   }
@@ -91,12 +104,14 @@ export default function NewsletterSignup({ variant = "panel" }) {
             />
             <button
               type="submit"
-              className="btn-orange shrink-0 !py-3 text-sm"
+              disabled={loading}
+              className="btn-orange shrink-0 !py-3 text-sm disabled:opacity-60"
             >
-              Subscribe Free
+              {loading ? "Subscribing…" : "Subscribe Free"}
             </button>
           </form>
         )}
+        {error && <p className="mt-2 text-xs text-white/75">{error}</p>}
         <p className="mt-3 text-xs text-white/55">
           Join readers who take their hearing health seriously.
         </p>
