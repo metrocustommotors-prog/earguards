@@ -9,21 +9,13 @@ export default function NewsletterSignup({ variant = "panel" }) {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const submit = async (e) => {
     e.preventDefault();
     if (!email.includes("@")) return;
     setLoading(true);
-    setError(null);
-    const { error: dbError } = await supabase
-      .from("newsletter_subscribers")
-      .insert({ email });
+    await supabase.from("newsletter_subscribers").insert({ email });
     setLoading(false);
-    if (dbError && dbError.code !== "23505") {
-      setError("Something went wrong. Please try again.");
-      return;
-    }
     setDone(true);
   };
 
@@ -56,7 +48,6 @@ export default function NewsletterSignup({ variant = "panel" }) {
             </button>
           </form>
         )}
-        {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
       </div>
     );
   }
@@ -111,7 +102,6 @@ export default function NewsletterSignup({ variant = "panel" }) {
             </button>
           </form>
         )}
-        {error && <p className="mt-2 text-xs text-white/75">{error}</p>}
         <p className="mt-3 text-xs text-white/55">
           Join readers who take their hearing health seriously.
         </p>

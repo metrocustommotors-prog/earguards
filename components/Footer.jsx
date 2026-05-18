@@ -76,6 +76,7 @@ export default function Footer() {
               Affiliate Disclosure
             </h3>
             <p className="mt-4 text-xs leading-relaxed text-white/55">
+              As an Amazon Associate, I earn from qualifying purchases.
               EarGuards.com may earn a commission when you buy through links on
               our site. This helps support our free guides. We are reader-funded
               and never sell products directly.

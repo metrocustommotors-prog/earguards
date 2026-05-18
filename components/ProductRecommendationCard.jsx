@@ -86,17 +86,23 @@ export default function ProductRecommendationCard({
           </div>
         </div>
 
-        {/* affiliate CTAs (placeholders) */}
+        {/* affiliate CTAs */}
         <div className="mt-5 flex flex-wrap gap-2">
-          <a href="#" rel="sponsored nofollow" className="btn-affiliate flex-1 min-w-[120px]">
+          <a
+            href={`https://www.amazon.com/s?k=${encodeURIComponent(name)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-affiliate flex-1 min-w-[120px]"
+          >
             Check Price
           </a>
           <a
-            href="#"
-            rel="nofollow"
+            href={`https://www.amazon.com/s?k=${encodeURIComponent(name)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn inline-flex flex-1 min-w-[120px] items-center justify-center border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink hover:border-brand-blue hover:text-brand-blue"
           >
-            Read Review
+            Compare Options
           </a>
         </div>
       </div>
