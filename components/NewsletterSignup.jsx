@@ -18,9 +18,9 @@ export default function NewsletterSignup({ variant = "panel" }) {
     setError(null);
     const { error: dbError } = await supabase
       .from("newsletter_subscribers")
-      .upsert({ email }, { onConflict: "email", ignoreDuplicates: true });
+      .insert({ email });
     setLoading(false);
-    if (dbError) {
+    if (dbError && dbError.code !== "23505") {
       setError("Something went wrong. Please try again.");
       return;
     }
