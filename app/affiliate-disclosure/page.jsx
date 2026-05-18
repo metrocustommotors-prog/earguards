@@ -25,9 +25,6 @@ export default function AffiliateDisclosurePage() {
 
           <h2>The short version</h2>
           <p>
-            As an Amazon Associate, I earn from qualifying purchases.
-          </p>
-          <p>
             {site.name} participates in affiliate programs. This means that
             when you click certain links on our site and make a purchase, we
             may earn a small commission — at no extra cost to you. We also
