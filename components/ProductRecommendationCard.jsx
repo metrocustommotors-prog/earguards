@@ -10,6 +10,7 @@ export default function ProductRecommendationCard({
   pros = [],
   cons = [],
   rank,
+  amazonSearchUrl,
 }) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-brand-line bg-white shadow-card">
@@ -89,7 +90,7 @@ export default function ProductRecommendationCard({
         {/* affiliate CTAs */}
         <div className="mt-5 flex flex-wrap gap-2">
           <a
-            href={`https://www.amazon.com/s?k=${encodeURIComponent(name)}`}
+            href={amazonSearchUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-affiliate flex-1 min-w-[120px]"
@@ -97,7 +98,7 @@ export default function ProductRecommendationCard({
             Check Price
           </a>
           <a
-            href={`https://www.amazon.com/s?k=${encodeURIComponent(name)}`}
+            href={amazonSearchUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn inline-flex flex-1 min-w-[120px] items-center justify-center border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink hover:border-brand-blue hover:text-brand-blue"

@@ -237,6 +237,7 @@ export default async function ArticlePage({ params }) {
                     specs={product.specs}
                     pros={product.pros}
                     cons={product.cons}
+                    amazonSearchUrl={product.amazonSearchUrl}
                   />
                 ))}
               </div>
