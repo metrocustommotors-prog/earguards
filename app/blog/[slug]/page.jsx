@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { articles, getArticle, getRelatedArticles } from "@/lib/articles";
@@ -11,6 +12,7 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ArticleCard from "@/components/ArticleCard";
+import RangeCardCallout from "@/components/RangeCardCallout";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -202,16 +204,25 @@ export default async function ArticlePage({ params }) {
 
             {/* Body sections */}
             {article.sections.map((section) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="prose-article mt-10 scroll-mt-28"
-              >
-                <h2>{section.heading}</h2>
-                {section.body.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </section>
+              <Fragment key={section.id}>
+                <section
+                  id={section.id}
+                  className="prose-article mt-10 scroll-mt-28"
+                >
+                  <h2>{section.heading}</h2>
+                  {section.body.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </section>
+                {article.slug === "best-ear-protection-for-shooting" &&
+                  section.id === "impulse-noise" && (
+                    <RangeCardCallout variant="shooting" />
+                  )}
+                {article.slug === "what-is-noise-reduction-rating" &&
+                  section.id === "real-world" && (
+                    <RangeCardCallout variant="nrr" />
+                  )}
+              </Fragment>
             ))}
 
             <AdPlaceholder format="inline" />
@@ -338,6 +349,18 @@ export default async function ArticlePage({ params }) {
                       Best Ear Protection
                     </Link>
                   </li>
+                  {(article.slug === "best-ear-protection-for-shooting" ||
+                    article.slug === "what-is-noise-reduction-rating") && (
+                    <li>
+                      <Link
+                        href="/range-nrr-card"
+                        className="inline-flex items-center gap-1.5 text-brand-blue hover:underline"
+                      >
+                        <Icon name="doc" className="h-4 w-4" />
+                        Range NRR card
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

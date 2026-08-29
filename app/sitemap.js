@@ -8,6 +8,7 @@ export default function sitemap() {
     "",
     "/best-ear-protection",
     "/hearing-safety-guides",
+    "/range-nrr-card",
     "/noise-level-database",
     "/osha-hearing-protection",
     "/blog",
