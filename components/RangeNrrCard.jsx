@@ -34,13 +34,24 @@ export default function RangeNrrCard() {
             <span>01</span> Gunshot vs. range vs. that 85 dB number
           </h2>
           <div className="nrr-card__cols2">
-            <div>
-              <h3 className="nrr-card__sub">Shop-floor 85</h3>
-              <p>
-                NIOSH’s 8-hour recommended limit is 85 dBA. OSHA’s legal 8-hour
-                cap is 90 dBA; they start a hearing program at 85. Those are
-                averages over a shift — grinders, HVAC, traffic.
-              </p>
+            <div className="nrr-card__stack">
+              <div>
+                <h3 className="nrr-card__sub">Shop-floor 85</h3>
+                <p>
+                  NIOSH’s 8-hour recommended limit is 85 dBA. OSHA’s legal
+                  8-hour cap is 90 dBA; they start a hearing program at 85.
+                  Those are averages over a shift — grinders, HVAC, traffic.
+                </p>
+              </div>
+              <div>
+                <h3 className="nrr-card__sub">Indoors adds bounce</h3>
+                <p>
+                  Walls throw the blast back. Your neighbor’s muzzle and the
+                  concrete are part of your dose. That is why a range posts “ear
+                  pro required” and never bothers printing 85 — the number on a
+                  construction poster is not the number at the firing line.
+                </p>
+              </div>
             </div>
             <div>
               <h3 className="nrr-card__sub">A shot is impulse</h3>
@@ -48,15 +59,6 @@ export default function RangeNrrCard() {
                 Pistol and rifle peaks at the ear commonly land 155–168 dB. Some
                 rifles and indoor bays run higher. OSHA and NIOSH both say: do
                 not take unprotected impulse peaks above 140 dB.
-              </p>
-            </div>
-            <div className="nrr-card__span2">
-              <h3 className="nrr-card__sub">Indoors adds bounce</h3>
-              <p>
-                Walls throw the blast back. Your neighbor’s muzzle and the
-                concrete are part of your dose. That is why a range posts “ear
-                pro required” and never bothers printing 85 — the number on a
-                construction poster is not the number at the firing line.
               </p>
             </div>
           </div>
@@ -189,10 +191,8 @@ export default function RangeNrrCard() {
             <span className="nrr-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path
-                  d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
+                  d="M12 3.2l7.2 3.1v5.2c0 5.1-3.6 8.6-7.2 10.1-3.6-1.5-7.2-5-7.2-10.1V6.3L12 3.2z"
+                  fill="currentColor"
                 />
               </svg>
             </span>

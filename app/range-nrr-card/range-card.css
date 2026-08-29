@@ -178,8 +178,10 @@
   gap: 1.15cqi 2.3cqi;
 }
 
-.nrr-card__span2 {
-  grid-column: 1 / -1;
+.nrr-card__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15cqi;
 }
 
 .nrr-card__sub {
@@ -343,16 +345,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.35cqi;
-  height: 2.35cqi;
-  border: 0.14cqi solid var(--nrr-ink);
+  width: 2.45cqi;
+  height: 2.45cqi;
   border-radius: 50%;
-  color: var(--nrr-ink);
+  background: var(--nrr-ink);
+  color: var(--nrr-cream);
 }
 
 .nrr-card__mark svg {
-  width: 1.45cqi;
-  height: 1.45cqi;
+  width: 1.35cqi;
+  height: 1.35cqi;
 }
 
 .nrr-card__fine {

@@ -69,16 +69,21 @@ export default function RangeNrrCardPage() {
               <Icon name="chevron" className="h-3 w-3" />
               <span className="text-brand-ink">Range NRR card</span>
             </nav>
-            <h1 className="mt-3 font-display text-2xl font-extrabold text-brand-ink md:text-3xl">
+            <p className="mt-3 font-display text-2xl font-extrabold text-brand-ink md:text-3xl">
               Printable range counter card
-            </h1>
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-brand-slate md:text-base">
               Educational only — one US Letter page. Use the print button; your
               browser’s print dialog will fill a single sheet. No products, no
               prices, no checkout.
             </p>
           </div>
-          <PrintCardButton className="self-start md:self-auto" />
+          <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
+            <PrintCardButton />
+            <a href="/range-nrr-card.pdf" className="btn-outline" download>
+              Download PDF
+            </a>
+          </div>
         </div>
       </div>
 
