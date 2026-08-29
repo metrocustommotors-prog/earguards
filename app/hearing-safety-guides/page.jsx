@@ -7,6 +7,7 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
+import RangeCardCallout from "@/components/RangeCardCallout";
 
 export const metadata = {
   title: "Hearing Safety Guides — Learn How to Protect Your Hearing",
@@ -80,6 +81,10 @@ export default function HearingSafetyGuidesPage() {
             ))}
           </div>
         </section>
+
+        <div className="mt-12">
+          <RangeCardCallout variant="guides" />
+        </div>
 
         <div className="mt-12">
           <AdPlaceholder format="leaderboard" />

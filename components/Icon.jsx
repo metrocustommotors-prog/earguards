@@ -160,6 +160,14 @@ export function Icon({ name, className = "h-6 w-6" }) {
           <path d="M12 10v4M12 17v.5" />
         </svg>
       );
+    case "print":
+      return (
+        <svg {...props}>
+          <path d="M6 9V3h12v6" />
+          <path d="M6 17H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />
+          <rect x="6" y="13" width="12" height="8" rx="0.5" />
+        </svg>
+      );
     case "phone":
       return (
         <svg {...props}>
