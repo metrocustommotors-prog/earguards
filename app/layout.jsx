@@ -3,6 +3,9 @@ import { site } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+const AVANTLINK_CONFIRM_SRC =
+  "https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=8f1f9909794e60617ca7f4df8629ce757f83987a";
+
 export const metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -59,6 +62,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <script type="text/javascript" src={AVANTLINK_CONFIRM_SRC} />
+      </head>
       <body>
         <script
           type="application/ld+json"
