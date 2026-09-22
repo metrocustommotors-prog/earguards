@@ -1,4 +1,3 @@
-import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/site";
 import Header from "@/components/Header";
@@ -63,12 +62,10 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <script type="text/javascript" src={AVANTLINK_CONFIRM_SRC} />
+      </head>
       <body>
-        <Script
-          type="text/javascript"
-          src={AVANTLINK_CONFIRM_SRC}
-          strategy="beforeInteractive"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
