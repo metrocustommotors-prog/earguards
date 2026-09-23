@@ -14,7 +14,7 @@ import RangeCardCallout from "@/components/RangeCardCallout";
 export const metadata = pageMetadata({
   title: "Best Ear Protection by Use Case (2026 Picks & Guides)",
   description:
-    "Browse the best ear protection for work, shooting, sleep, concerts and live music, kids, motorsports, travel, and sensory needs. Research-backed picks and full buying guides.",
+    "Browse the best ear protection for work, shooting, sleep, music lovers, kids, motorsports, travel, and sensory needs. Research-backed picks and full buying guides.",
   path: "/best-ear-protection",
 });
 
@@ -44,7 +44,7 @@ const categoryGuide = {
     },
     {
       slug: "best-ear-protection-for-musicians",
-      label: "Stage & rehearsal",
+      label: "Stage & practice",
     },
   ],
   kids: "best-ear-protection-for-kids",
