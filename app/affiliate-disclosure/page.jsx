@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Affiliate Disclosure — Ear Guards",
+export const metadata = pageMetadata({
+  title: "Affiliate Disclosure",
   description:
     "How Ear Guards uses affiliate links and display advertising to fund free hearing protection guides, and how we keep our recommendations independent.",
-  alternates: { canonical: "/affiliate-disclosure" },
-};
+  path: "/affiliate-disclosure",
+});
 
 export default function AffiliateDisclosurePage() {
   return (

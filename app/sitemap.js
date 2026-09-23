@@ -1,9 +1,11 @@
 import { articles } from "@/lib/articles";
-import { site } from "@/lib/site";
+import { contentUpdated, site } from "@/lib/site";
+
+function lastModified(iso) {
+  return new Date(`${iso}T00:00:00.000Z`);
+}
 
 export default function sitemap() {
-  const now = new Date();
-
   const staticRoutes = [
     "",
     "/best-ear-protection",
@@ -19,14 +21,14 @@ export default function sitemap() {
     "/terms",
   ].map((path) => ({
     url: `${site.url}${path}`,
-    lastModified: now,
+    lastModified: lastModified(contentUpdated),
     changeFrequency: path === "" || path === "/blog" ? "weekly" : "monthly",
     priority: path === "" ? 1 : 0.7,
   }));
 
-  const articleRoutes = articles.map((a) => ({
-    url: `${site.url}/blog/${a.slug}`,
-    lastModified: now,
+  const articleRoutes = articles.map((article) => ({
+    url: `${site.url}/blog/${article.slug}`,
+    lastModified: lastModified(article.updatedISO || contentUpdated),
     changeFrequency: "monthly",
     priority: 0.8,
   }));

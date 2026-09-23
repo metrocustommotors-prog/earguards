@@ -8,13 +8,14 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Best Ear Protection by Use Case (2026 Picks & Guides)",
   description:
     "Browse the best ear protection for work, shooting, sleep, concerts, kids, motorsports, travel, and sensory needs. Research-backed picks and full buying guides.",
-  alternates: { canonical: "/best-ear-protection" },
-};
+  path: "/best-ear-protection",
+});
 
 const overallTable = {
   columns: ["Product Type", "Best For", "Typical NRR", "Reusable"],

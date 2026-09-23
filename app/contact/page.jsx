@@ -3,13 +3,14 @@ import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Icon } from "@/components/Icon";
+import { jsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Contact Ear Guards — Questions, Feedback & Partnerships",
+export const metadata = pageMetadata({
+  title: "Contact — Questions, Feedback & Partnerships",
   description:
     "Get in touch with the Ear Guards team. Send questions, corrections, partnership inquiries, or feedback about our hearing protection guides.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const channels = [
   {
@@ -52,8 +53,22 @@ const contactFaq = [
 ];
 
 export default function ContactPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: contactFaq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(faqSchema) }}
+      />
       <PageHero
         eyebrow="Get In Touch"
         title="Contact us"

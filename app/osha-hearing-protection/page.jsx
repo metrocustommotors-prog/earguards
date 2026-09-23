@@ -6,13 +6,14 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "OSHA Hearing Protection Standards — Workplace Noise Guide",
   description:
     "A plain-English overview of OSHA's hearing conservation rules: the 85 dBA action level, 90 dBA exposure limit, exchange rate, free protectors, and testing.",
-  alternates: { canonical: "/osha-hearing-protection" },
-};
+  path: "/osha-hearing-protection",
+});
 
 const exposureTable = [
   ["90 dBA", "8 hours"],

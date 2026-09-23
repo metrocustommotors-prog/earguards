@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Page Not Found — Ear Guards",
-};
+export const metadata = pageMetadata({
+  title: "Page Not Found",
+  description:
+    "That page is missing. Head back to Ear Guards hearing protection guides.",
+  path: "/",
+  canonical: false,
+});
 
 export default function NotFound() {
   return (

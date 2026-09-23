@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Privacy Policy — Ear Guards",
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
   description:
     "How Ear Guards collects, uses, and protects your information, including cookies, analytics, advertising, and your privacy choices.",
-  alternates: { canonical: "/privacy-policy" },
-};
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (
