@@ -2,21 +2,45 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
-import { supabase } from "@/lib/supabase";
 
 // variant: "panel" (full section) | "inline" (compact card)
 export default function NewsletterSignup({ variant = "panel" }) {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const submit = async (e) => {
     e.preventDefault();
     if (!email.includes("@")) return;
     setLoading(true);
-    await supabase.from("newsletter_subscribers").insert({ email });
-    setLoading(false);
-    setDone(true);
+    setError(null);
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/hello@earguards.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          _replyto: email,
+          _subject: "Ear Guards newsletter signup",
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) {
+        setError("Something went wrong. Please try again.");
+        return;
+      }
+      setDone(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (variant === "inline") {
@@ -47,6 +71,9 @@ export default function NewsletterSignup({ variant = "panel" }) {
               {loading ? "…" : "Subscribe"}
             </button>
           </form>
+        )}
+        {error && !done && (
+          <p className="mt-2 text-sm text-red-600">{error}</p>
         )}
       </div>
     );
@@ -101,6 +128,9 @@ export default function NewsletterSignup({ variant = "panel" }) {
               {loading ? "Subscribing…" : "Subscribe Free"}
             </button>
           </form>
+        )}
+        {error && !done && (
+          <p className="mt-3 text-sm font-semibold text-white">{error}</p>
         )}
         <p className="mt-3 text-xs text-white/55">
           Join readers who take their hearing health seriously.

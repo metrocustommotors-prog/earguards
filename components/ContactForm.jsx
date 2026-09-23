@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
-import { supabase } from "@/lib/supabase";
 
 const topics = [
   "General question",
@@ -29,15 +28,40 @@ export default function ContactForm() {
     if (!form.name || !form.email || !form.message) return;
     setLoading(true);
     setError(null);
-    const { error: dbError } = await supabase
-      .from("contact_submissions")
-      .insert({ name: form.name, email: form.email, topic: form.topic, message: form.message });
-    setLoading(false);
-    if (dbError) {
+
+    const emailEndpoint =
+      form.topic === "Partnership or sponsorship"
+        ? "https://formsubmit.co/ajax/partners@earguards.com"
+        : "https://formsubmit.co/ajax/hello@earguards.com";
+
+    try {
+      const res = await fetch(emailEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          topic: form.topic,
+          message: form.message,
+          _replyto: form.email,
+          _subject: `Ear Guards contact: ${form.topic}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) {
+        setError("Something went wrong. Please try again.");
+        return;
+      }
+      setSent(true);
+    } catch {
       setError("Something went wrong. Please try again.");
-      return;
+    } finally {
+      setLoading(false);
     }
-    setSent(true);
   };
 
   if (sent) {
