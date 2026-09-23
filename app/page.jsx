@@ -9,13 +9,15 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SectionHeading from "@/components/SectionHeading";
 import { Icon } from "@/components/Icon";
+import { site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Ear Guards — Protect Your Hearing Before It's Gone",
-  description:
-    "Practical guides, product comparisons, and safety resources for choosing the right ear protection for work, sleep, shooting, concerts, travel, and everyday noise.",
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMetadata({
+  title: `${site.name} — ${site.tagline}`,
+  description: site.description,
+  path: "/",
+  absoluteTitle: true,
+});
 
 const trustStats = [
   { value: "10+", label: "In-depth buying guides" },

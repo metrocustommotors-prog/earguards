@@ -3,28 +3,16 @@ import { site } from "@/lib/site";
 import { Icon } from "@/components/Icon";
 import PrintCardButton from "@/components/PrintCardButton";
 import RangeNrrCard from "@/components/RangeNrrCard";
+import { jsonLd, pageMetadata } from "@/lib/seo";
 import "./range-card.css";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Ear Pro NRR Range Counter Card (Printable)",
   description:
     "One-page educational range card: what the package NRR means on a SoCal firing line. Gunshot peaks, foam vs. muffs vs. electronic, and when to double up. No products, no prices.",
-  alternates: { canonical: "/range-nrr-card" },
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: "Ear Pro NRR Range Counter Card (Printable)",
-    description:
-      "A one-page educational firing-line card on NRR, gunshot peaks, and dual protection. Not a product listing.",
-    url: "/range-nrr-card",
-    type: "article",
-  },
-  twitter: {
-    card: "summary",
-    title: "Ear Pro NRR Range Counter Card (Printable)",
-    description:
-      "A one-page educational firing-line card on NRR, gunshot peaks, and dual protection. Not a product listing.",
-  },
-};
+  path: "/range-nrr-card",
+  ogType: "article",
+});
 
 export default function RangeNrrCardPage() {
   const pageSchema = {
@@ -46,7 +34,7 @@ export default function RangeNrrCardPage() {
     <div className="nrr-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }}
       />
 
       <div className="nrr-page__toolbar nrr-no-print">
@@ -69,9 +57,9 @@ export default function RangeNrrCardPage() {
               <Icon name="chevron" className="h-3 w-3" />
               <span className="text-brand-ink">Range NRR card</span>
             </nav>
-            <p className="mt-3 font-display text-2xl font-extrabold text-brand-ink md:text-3xl">
+            <h1 className="mt-3 font-display text-2xl font-extrabold text-brand-ink md:text-3xl">
               Printable range counter card
-            </p>
+            </h1>
             <p className="mt-2 text-sm leading-relaxed text-brand-slate md:text-base">
               Educational only — one US Letter page. Use the print button; your
               browser’s print dialog will fill a single sheet. No products, no

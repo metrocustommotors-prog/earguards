@@ -7,9 +7,9 @@ export default function RangeNrrCard() {
             Range counter card · one page · no sales pitch
           </p>
           <div className="nrr-card__title-row">
-            <h1 className="nrr-card__title">
+            <p className="nrr-card__title">
               Ear pro <span>NRR</span>
-            </h1>
+            </p>
             <p className="nrr-card__deck">
               The number on the package is a lab score — not a gunshot rating.
               This is what it means on a SoCal firing line.

@@ -8,13 +8,14 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Hearing Safety Guides — Learn How to Protect Your Hearing",
   description:
     "Plain-English hearing safety guides: noise reduction ratings, safe decibel limits, ear plugs vs ear muffs, and how to prevent noise-induced hearing loss.",
-  alternates: { canonical: "/hearing-safety-guides" },
-};
+  path: "/hearing-safety-guides",
+});
 
 // Educational, non-product articles form the core of this hub.
 const guideSlugs = [

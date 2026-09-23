@@ -4,13 +4,14 @@ import ArticleCard from "@/components/ArticleCard";
 import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Hearing Protection Blog — Guides, Reviews & Comparisons",
   description:
     "Every Ear Guards article in one place: buying guides, product comparisons, and hearing safety explainers for work, sleep, shooting, concerts, and more.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+});
 
 const categoryLabels = {
   work: "Work & Job Site",

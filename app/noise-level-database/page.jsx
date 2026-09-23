@@ -6,13 +6,14 @@ import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Noise Level Database — How Loud Is It? (Decibel Chart)",
   description:
     "A decibel reference chart of everyday sounds, from a whisper to a jet engine. See which noise levels are safe and which require hearing protection.",
-  alternates: { canonical: "/noise-level-database" },
-};
+  path: "/noise-level-database",
+});
 
 const riskStyles = {
   safe: {

@@ -13,6 +13,10 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ArticleCard from "@/components/ArticleCard";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import { jsonLd, pageMetadata } from "@/lib/seo";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -22,24 +26,19 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) {
-    return { title: "Article Not Found" };
+    return {
+      title: "Article Not Found",
+      robots: { index: false, follow: true },
+    };
   }
-  return {
+  return pageMetadata({
     title: article.seoTitle,
     description: article.metaDescription,
-    alternates: { canonical: `/blog/${article.slug}` },
-    openGraph: {
-      title: article.seoTitle,
-      description: article.metaDescription,
-      url: `/blog/${article.slug}`,
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.seoTitle,
-      description: article.metaDescription,
-    },
-  };
+    path: `/blog/${article.slug}`,
+    ogType: "article",
+    publishedTime: article.updatedISO,
+    modifiedTime: article.updatedISO,
+  });
 }
 
 export default async function ArticlePage({ params }) {
@@ -65,14 +64,15 @@ export default async function ArticlePage({ params }) {
     "@type": "Article",
     headline: article.title,
     description: article.metaDescription,
-    author: { "@type": "Organization", name: site.name },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      url: site.url,
+    author: { "@id": `${site.url}/#organization` },
+    publisher: { "@id": `${site.url}/#organization` },
+    datePublished: article.updatedISO,
+    dateModified: article.updatedISO,
+    image: `${site.url}/og.png`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${site.url}/blog/${article.slug}`,
     },
-    dateModified: "2026-05-01",
-    mainEntityOfPage: `${site.url}/blog/${article.slug}`,
   };
 
   const faqSchema = {
@@ -109,15 +109,15 @@ export default async function ArticlePage({ params }) {
     <article>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(faqSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
 
       {/* Hero */}

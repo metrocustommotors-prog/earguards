@@ -5,13 +5,14 @@ import SectionHeading from "@/components/SectionHeading";
 import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About Ear Guards — Our Mission & Review Process",
   description:
     "Learn who is behind Ear Guards, how we research and recommend hearing protection, and how we stay editorially independent while earning affiliate revenue.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const reviewSteps = [
   {

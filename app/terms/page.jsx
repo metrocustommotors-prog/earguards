@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Terms of Use — Ear Guards",
+export const metadata = pageMetadata({
+  title: "Terms of Use",
   description:
     "The terms and conditions governing your use of the Ear Guards website, including content use, disclaimers, and limitations of liability.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
