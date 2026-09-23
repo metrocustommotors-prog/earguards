@@ -13,6 +13,8 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ArticleCard from "@/components/ArticleCard";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import EditorialCredit from "@/components/EditorialCredit";
+import GuideDiagram from "@/components/GuideDiagrams";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-static";
@@ -65,6 +67,11 @@ export default async function ArticlePage({ params }) {
     headline: article.title,
     description: article.metaDescription,
     author: { "@id": `${site.url}/#organization` },
+    reviewedBy: {
+      "@type": "Organization",
+      name: "EarGuards editorial team",
+      url: `${site.url}/about`,
+    },
     publisher: { "@id": `${site.url}/#organization` },
     datePublished: article.updatedISO,
     dateModified: article.updatedISO,
@@ -160,6 +167,7 @@ export default async function ArticlePage({ params }) {
                 Independently researched
               </span>
             </div>
+            <EditorialCredit className="mt-4 max-w-prose" />
           </div>
         </div>
       </header>
@@ -214,14 +222,14 @@ export default async function ArticlePage({ params }) {
                     <p key={i}>{p}</p>
                   ))}
                 </section>
-                {article.slug === "best-ear-protection-for-shooting" &&
-                  section.id === "impulse-noise" && (
-                    <RangeCardCallout variant="shooting" />
-                  )}
-                {article.slug === "what-is-noise-reduction-rating" &&
-                  section.id === "real-world" && (
-                    <RangeCardCallout variant="nrr" />
-                  )}
+                {section.diagram ? (
+                  <div className="mt-2">
+                    <GuideDiagram id={section.diagram} />
+                  </div>
+                ) : null}
+                {article.rangeCard?.afterSection === section.id && (
+                  <RangeCardCallout variant={article.rangeCard.variant} />
+                )}
               </Fragment>
             ))}
 
@@ -233,9 +241,9 @@ export default async function ArticlePage({ params }) {
                 Our top picks
               </h2>
               <p className="mt-2 max-w-prose text-brand-slate">
-                These categories reflect the options we would prioritize for
-                this use case. Pricing and availability change often — use the
-                buttons to compare current options.
+                Where a pick names a specific product, the price button opens
+                that Amazon listing. Compare similar stays a category search
+                so you can check alternatives. Prices and stock change often.
               </p>
               <div className="mt-6 grid gap-6">
                 {article.products.map((product, i) => (
@@ -249,6 +257,7 @@ export default async function ArticlePage({ params }) {
                     pros={product.pros}
                     cons={product.cons}
                     amazonSearchUrl={product.amazonSearchUrl}
+                    asin={product.asin}
                   />
                 ))}
               </div>
@@ -349,8 +358,7 @@ export default async function ArticlePage({ params }) {
                       Best Ear Protection
                     </Link>
                   </li>
-                  {(article.slug === "best-ear-protection-for-shooting" ||
-                    article.slug === "what-is-noise-reduction-rating") && (
+                  {article.rangeCard && (
                     <li>
                       <Link
                         href="/range-nrr-card"

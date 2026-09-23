@@ -7,6 +7,8 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import { pageMetadata } from "@/lib/seo";
+import RangeCardCallout from "@/components/RangeCardCallout";
+import EditorialCredit from "@/components/EditorialCredit";
 
 export const metadata = pageMetadata({
   title: "OSHA Hearing Protection Standards — Workplace Noise Guide",
@@ -43,6 +45,7 @@ export default function OshaPage() {
       />
 
       <div className="container-site py-10 md:py-14">
+        <EditorialCredit className="mb-8" />
         {/* Intro callout */}
         <section className="rounded-2xl border border-brand-orange/25 bg-brand-orangelight/60 p-6 md:p-7">
           <div className="flex items-start gap-3">
@@ -157,6 +160,10 @@ export default function OshaPage() {
 
         <div className="mt-12">
           <AffiliateDisclosure variant="box" />
+        </div>
+
+        <div className="mt-12">
+          <RangeCardCallout variant="field" />
         </div>
 
         {/* Related links */}

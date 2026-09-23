@@ -11,6 +11,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { Icon } from "@/components/Icon";
 import { site } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
+import RangeCardCallout from "@/components/RangeCardCallout";
 
 export const metadata = pageMetadata({
   title: `${site.name} — ${site.tagline}`,
@@ -144,6 +145,13 @@ export default function HomePage() {
                 Open the Noise Level Database
                 <Icon name="arrow" className="h-3.5 w-3.5" />
               </Link>
+              <Link
+                href="/range-nrr-card"
+                className="mt-2 flex items-center justify-center gap-1.5 py-1.5 text-xs font-display font-bold text-brand-orange hover:underline"
+              >
+                Gunshot peaks? Print the range NRR card
+                <Icon name="arrow" className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </div>
         </div>
@@ -207,6 +215,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="container-site py-10">
+        <RangeCardCallout variant="home" />
       </section>
 
       {/* ============ 4. MONETIZATION / AFFILIATE DISCLOSURE ============ */}

@@ -7,6 +7,8 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import { pageMetadata } from "@/lib/seo";
+import RangeCardCallout from "@/components/RangeCardCallout";
+import EditorialCredit from "@/components/EditorialCredit";
 
 export const metadata = pageMetadata({
   title: "Noise Level Database — How Loud Is It? (Decibel Chart)",
@@ -78,6 +80,7 @@ export default function NoiseLevelDatabasePage() {
       />
 
       <div className="container-site py-10 md:py-14">
+        <EditorialCredit className="mb-8" />
         {/* Legend */}
         <section>
           <SectionHeading
@@ -227,6 +230,10 @@ export default function NoiseLevelDatabasePage() {
             .
           </p>
         </section>
+
+        <div className="mt-8">
+          <RangeCardCallout variant="shooting" />
+        </div>
 
         <div className="mt-12">
           <NewsletterSignup variant="panel" />

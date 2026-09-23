@@ -23,7 +23,7 @@ export default function sitemap() {
     url: `${site.url}${path}`,
     lastModified: lastModified(contentUpdated),
     changeFrequency: path === "" || path === "/blog" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.7,
+    priority: path === "" ? 1 : path === "/range-nrr-card" ? 0.9 : 0.7,
   }));
 
   const articleRoutes = articles.map((article) => ({

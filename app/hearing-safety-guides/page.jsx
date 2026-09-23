@@ -8,6 +8,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import EditorialCredit from "@/components/EditorialCredit";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -56,6 +57,7 @@ export default function HearingSafetyGuidesPage() {
       />
 
       <div className="container-site py-10 md:py-14">
+        <EditorialCredit className="mb-8" />
         {/* Core principles */}
         <section>
           <SectionHeading
