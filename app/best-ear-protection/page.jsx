@@ -14,7 +14,7 @@ import RangeCardCallout from "@/components/RangeCardCallout";
 export const metadata = pageMetadata({
   title: "Best Ear Protection by Use Case (2026 Picks & Guides)",
   description:
-    "Browse the best ear protection for work, shooting, sleep, concerts, kids, motorsports, travel, and sensory needs. Research-backed picks and full buying guides.",
+    "Browse the best ear protection for work, shooting, sleep, concerts and live music, kids, motorsports, travel, and sensory needs. Research-backed picks and full buying guides.",
   path: "/best-ear-protection",
 });
 
@@ -30,17 +30,42 @@ const overallTable = {
   ],
 };
 
-// Map each category to its primary guide article slug.
+// Map each category to its guide article slug.
+// A string is the single primary guide. An array lists more than one,
+// each with a short label so the reader can pick the right guide.
 const categoryGuide = {
   work: "best-ear-protection-for-construction-workers",
   shooting: "best-ear-protection-for-shooting",
   sleep: "best-ear-plugs-for-sleeping",
-  concerts: "best-ear-protection-for-concerts",
+  concerts: [
+    {
+      slug: "best-ear-protection-for-concerts",
+      label: "Audience & festivals",
+    },
+    {
+      slug: "best-ear-protection-for-musicians",
+      label: "Stage & rehearsal",
+    },
+  ],
   kids: "best-ear-protection-for-kids",
   sensory: "best-ear-protection-for-sensory-sensitivity",
   motorsports: "best-ear-protection-for-motorcycle-riders",
   travel: "best-ear-protection-for-flying",
 };
+
+function guidesForCategory(slug) {
+  const mapped = categoryGuide[slug];
+  const entries = Array.isArray(mapped)
+    ? mapped
+    : mapped
+      ? [{ slug: mapped, label: "Full guide" }]
+      : [];
+
+  return entries.flatMap((entry) => {
+    const article = articles.find((a) => a.slug === entry.slug);
+    return article ? [{ article, label: entry.label || "Full guide" }] : [];
+  });
+}
 
 export default function BestEarProtectionPage() {
   return (
@@ -60,7 +85,7 @@ export default function BestEarProtectionPage() {
       <section className="container-site pb-4">
         <div className="grid gap-5 lg:grid-cols-2">
           {categories.map((c) => {
-            const guide = articles.find((a) => a.slug === categoryGuide[c.slug]);
+            const guides = guidesForCategory(c.slug);
             const isOrange = c.accent === "orange";
             return (
               <div
@@ -87,31 +112,38 @@ export default function BestEarProtectionPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between p-5">
-                  {guide ? (
-                    <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wide text-brand-slate">
-                        Full guide
-                      </p>
-                      <Link
-                        href={`/blog/${guide.slug}`}
-                        className="font-display text-sm font-bold text-brand-blue hover:underline"
-                      >
-                        {guide.title}
-                      </Link>
+                <div className={guides.length > 1 ? "divide-y divide-brand-line" : undefined}>
+                  {guides.length === 0 ? (
+                    <div className="p-5">
+                      <span className="text-sm text-brand-slate">
+                        Guide coming soon
+                      </span>
                     </div>
                   ) : (
-                    <span className="text-sm text-brand-slate">
-                      Guide coming soon
-                    </span>
-                  )}
-                  {guide && (
-                    <Link
-                      href={`/blog/${guide.slug}`}
-                      className="btn-affiliate shrink-0"
-                    >
-                      Compare Options
-                    </Link>
+                    guides.map(({ article, label }) => (
+                      <div
+                        key={article.slug}
+                        className="flex items-center justify-between gap-4 p-5"
+                      >
+                        <div className="min-w-0">
+                          <p className="text-[11px] font-bold uppercase tracking-wide text-brand-slate">
+                            {label}
+                          </p>
+                          <Link
+                            href={`/blog/${article.slug}`}
+                            className="font-display text-sm font-bold text-brand-blue hover:underline"
+                          >
+                            {article.title}
+                          </Link>
+                        </div>
+                        <Link
+                          href={`/blog/${article.slug}`}
+                          className="btn-affiliate shrink-0"
+                        >
+                          Compare Options
+                        </Link>
+                      </div>
+                    ))
                   )}
                 </div>
               </div>
