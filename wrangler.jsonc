@@ -9,9 +9,10 @@
   // There are no routes or custom domains here, so this deploy does not change
   // earguards.com DNS or mail. Apex and www stay on Bolt until cutover.
   //
-  // Do not pass --preview or --env preview for production. Wrangler names that
-  // environment `<name>-<env>`. env.preview.name is already `earguards-preview`,
-  // so `npm run deploy:preview` publishes `earguards-preview-preview`
+  // Do not use `npm run deploy:preview` for production. That build bakes the
+  // preview name `earguards-preview` into dist/server/wrangler.json (no env
+  // block). `--preview` then runs `wrangler deploy --env preview`, and Wrangler
+  // appends `-preview` again, publishing `earguards-preview-preview`
   // (https://earguards-preview-preview.friscolounge.workers.dev).
   //
   // Custom domains are a separate step. See README "Cloudflare Workers".
