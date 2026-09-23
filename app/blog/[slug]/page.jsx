@@ -13,6 +13,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ArticleCard from "@/components/ArticleCard";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import MusicCardCallout from "@/components/MusicCardCallout";
 import EditorialCredit from "@/components/EditorialCredit";
 import GuideDiagram from "@/components/GuideDiagrams";
 import { jsonLd, pageMetadata } from "@/lib/seo";
@@ -230,6 +231,9 @@ export default async function ArticlePage({ params }) {
                 {article.rangeCard?.afterSection === section.id && (
                   <RangeCardCallout variant={article.rangeCard.variant} />
                 )}
+                {article.musicCard?.afterSection === section.id && (
+                  <MusicCardCallout variant={article.musicCard.variant} />
+                )}
               </Fragment>
             ))}
 
@@ -366,6 +370,17 @@ export default async function ArticlePage({ params }) {
                       >
                         <Icon name="doc" className="h-4 w-4" />
                         Range NRR card
+                      </Link>
+                    </li>
+                  )}
+                  {article.musicCard && (
+                    <li>
+                      <Link
+                        href="/music-ear-card"
+                        className="inline-flex items-center gap-1.5 text-brand-blue hover:underline"
+                      >
+                        <Icon name="music" className="h-4 w-4" />
+                        Music ear card
                       </Link>
                     </li>
                   )}

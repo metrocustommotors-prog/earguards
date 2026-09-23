@@ -11,6 +11,7 @@ export default function sitemap() {
     "/best-ear-protection",
     "/hearing-safety-guides",
     "/range-nrr-card",
+    "/music-ear-card",
     "/noise-level-database",
     "/osha-hearing-protection",
     "/blog",
@@ -23,7 +24,12 @@ export default function sitemap() {
     url: `${site.url}${path}`,
     lastModified: lastModified(contentUpdated),
     changeFrequency: path === "" || path === "/blog" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path === "/range-nrr-card" ? 0.9 : 0.7,
+    priority:
+      path === ""
+        ? 1
+        : path === "/range-nrr-card" || path === "/music-ear-card"
+          ? 0.9
+          : 0.7,
   }));
 
   const articleRoutes = articles.map((article) => ({

@@ -9,6 +9,7 @@ const guideLinks = [
   { label: "Noise Level Database", href: "/noise-level-database" },
   { label: "OSHA Resources", href: "/osha-hearing-protection" },
   { label: "Range NRR Card", href: "/range-nrr-card" },
+  { label: "Music Ear Card", href: "/music-ear-card" },
   { label: "Blog", href: "/blog" },
 ];
 
