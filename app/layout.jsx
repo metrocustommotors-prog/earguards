@@ -77,6 +77,22 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/libre-franklin-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/source-sans-3-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

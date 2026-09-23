@@ -81,7 +81,7 @@ Zone routes are the alternative when the hostnames should stay proxied on the zo
 - **Next.js 16** — App Router, static generation, dynamic article routes
 - **React 18**
 - **Tailwind CSS 3** — custom brand theme (blue / gray / safety-orange)
-- Fonts: Libre Franklin (display) + Source Sans 3 (body)
+- Fonts: self-hosted Libre Franklin (display) + Source Sans 3 (body). The range NRR card also self-hosts Barlow Condensed and EB Garamond. Files live in `public/fonts/` (latin subset, SIL Open Font License).
 
 ## Project structure
 
