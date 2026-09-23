@@ -17,11 +17,63 @@ npm install
 npm run dev      # http://localhost:3000
 ```
 
-Production build:
+Production build (Bolt / Next.js, unchanged):
 
 ```bash
 npm run build
 npm run start
+```
+
+## Cloudflare Workers
+
+`npm run build` still builds the Next.js app for Bolt. Workers deploys use vinext and do not change DNS.
+
+Production publishes the Worker named `earguards` on `workers.dev` only. The script clears `CLOUDFLARE_ENV` and passes `--name earguards` with no `--env`, so Wrangler does not append `-preview` (that suffix is what turns the preview environment into `earguards-preview-preview`).
+
+```bash
+export CLOUDFLARE_API_TOKEN=...   # Edit Cloudflare Workers
+export CLOUDFLARE_ACCOUNT_ID=...  # account that owns the workers.dev subdomain
+npm ci
+npm run deploy
+```
+
+`npm run deploy` runs:
+
+```bash
+env -u CLOUDFLARE_ENV vinext-cloudflare deploy --name earguards --config dist/server/wrangler.json
+```
+
+Wrangler prints the workers.dev URL. On the same account as the approved preview, that is `https://earguards.friscolounge.workers.dev`.
+
+`npm run deploy:preview` is only the approved preview Worker `earguards-preview-preview`. Do not use it for production.
+
+### Attach earguards.com and www
+
+Do this only when HTTP cutover is approved. It does not belong in the default deploy. Leave Bolt in place until the hostnames answer from the Worker. Do not change MX, SPF, DKIM, or DMARC.
+
+Preferred: Workers Custom Domains on zone `earguards.com`. Cloudflare creates the hostname DNS record and certificate. A Custom Domain cannot be added while that hostname still has a CNAME, so delete only the apex and `www` records that point at Bolt (`site-dns.bolt.host`) first. Then:
+
+```bash
+curl -fsS -X PUT "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/domains" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"hostname":"earguards.com","service":"earguards","zone_name":"earguards.com"}'
+
+curl -fsS -X PUT "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/domains" \
+  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"hostname":"www.earguards.com","service":"earguards","zone_name":"earguards.com"}'
+```
+
+The same attachment can be done by uncommenting the `routes` block in `wrangler.jsonc` (both patterns use `"custom_domain": true` and `"zone_name": "earguards.com"`) and running `npm run deploy` again.
+
+Zone routes are the alternative when the hostnames should stay proxied on the zone without Workers creating DNS records. They only run for orange-cloud hostnames:
+
+```jsonc
+"routes": [
+  { "pattern": "earguards.com/*", "zone_name": "earguards.com" },
+  { "pattern": "www.earguards.com/*", "zone_name": "earguards.com" }
+]
 ```
 
 ## Tech stack
