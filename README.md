@@ -28,7 +28,7 @@ npm run start
 
 `npm run build` still builds the Next.js app for Bolt. Workers deploys use vinext and do not change DNS.
 
-Production publishes the Worker named `earguards` on `workers.dev` only. The script clears `CLOUDFLARE_ENV` and passes `--name earguards` with no `--env`, so Wrangler does not append `-preview` (that suffix is what turns the preview environment into `earguards-preview-preview`).
+Production publishes the Worker named `earguards` on `workers.dev` only. The script clears `CLOUDFLARE_ENV` and passes `--name earguards` with no `--env`. `npm run deploy:preview` is separate: the preview build bakes the name `earguards-preview`, then `--preview` runs `wrangler deploy --env preview` against that generated config, which appends another `-preview` and publishes `earguards-preview-preview`.
 
 ```bash
 export CLOUDFLARE_API_TOKEN=...   # Edit Cloudflare Workers
