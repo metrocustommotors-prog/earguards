@@ -128,7 +128,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="How we work"
             title="Our review process"
-            description="Every recommendation on Ear Guards follows the same four-step approach."
+            description="Every recommendation on Ear Guards follows the same four-step approach. Guides are credited to the EarGuards editorial team, with a last-reviewed date on each page. They are general education, not a clinical opinion."
           />
           <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {reviewSteps.map((step, i) => (

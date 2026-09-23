@@ -17,6 +17,16 @@ const copy = {
     title: "Ear pro NRR — range counter card",
     body: "A one-page firing-line reference: 155–168 dB peaks, the 85 dB shop-floor number, and when a single device is not enough. Educational only — no products or checkout.",
   },
+  field: {
+    eyebrow: "Printable range card",
+    title: "Shop-floor 85 dB and the NRR field rule",
+    body: "The same one-page card covers the 85 dB action level, why package NRR gets de-rated, and when to double up. Educational only — no products or prices.",
+  },
+  home: {
+    eyebrow: "Printable range card",
+    title: "Ear pro NRR, on one page",
+    body: "Gunshot peaks, the 85 dB shop-floor number, and foam vs. muffs vs. electronic — a US Letter card for the range counter. No products, no prices.",
+  },
 };
 
 export default function RangeCardCallout({ variant = "guides" }) {

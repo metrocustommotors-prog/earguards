@@ -23,9 +23,12 @@ export default function Header() {
             <Icon name="shield" className="h-3.5 w-3.5 text-brand-orange" />
             Independent hearing-safety research &amp; product guides
           </span>
-          <span className="text-white/60">
-            Trusted advice — never an online store
-          </span>
+          <Link
+            href="/range-nrr-card"
+            className="font-semibold text-white/80 hover:text-white"
+          >
+            Print the range NRR card
+          </Link>
         </div>
       </div>
 
@@ -84,6 +87,17 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/range-nrr-card"
+              onClick={() => setOpen(false)}
+              className={`rounded-md px-3 py-3 text-sm font-display font-semibold ${
+                isActive("/range-nrr-card")
+                  ? "bg-brand-bluelight text-brand-blue"
+                  : "text-brand-ink/80"
+              }`}
+            >
+              Range NRR card
+            </Link>
             <Link
               href="/best-ear-protection"
               onClick={() => setOpen(false)}

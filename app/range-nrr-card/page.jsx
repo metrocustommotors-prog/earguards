@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { Icon } from "@/components/Icon";
 import PrintCardButton from "@/components/PrintCardButton";
 import RangeNrrCard from "@/components/RangeNrrCard";
+import EditorialCredit from "@/components/EditorialCredit";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 import "./range-card.css";
 
@@ -65,6 +66,7 @@ export default function RangeNrrCardPage() {
               browser’s print dialog will fill a single sheet. No products, no
               prices, no checkout.
             </p>
+            <EditorialCredit className="mt-3" />
           </div>
           <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
             <PrintCardButton />

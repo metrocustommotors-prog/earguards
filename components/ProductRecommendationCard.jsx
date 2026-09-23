@@ -1,7 +1,8 @@
 import { Icon } from "./Icon";
+import { amazonProductUrl } from "@/lib/amazon";
 
-// Affiliate product recommendation card. Buttons are placeholders —
-// replace href="#" with real affiliate links when monetizing.
+// Affiliate card. A verified ASIN opens that product; otherwise both
+// buttons stay on the tagged category search.
 export default function ProductRecommendationCard({
   name,
   badge,
@@ -11,7 +12,10 @@ export default function ProductRecommendationCard({
   cons = [],
   rank,
   amazonSearchUrl,
+  asin,
 }) {
+  const productUrl = asin ? amazonProductUrl(asin) : null;
+  const priceHref = productUrl || amazonSearchUrl;
   return (
     <div className="relative overflow-hidden rounded-2xl border border-brand-line bg-white shadow-card">
       {/* badge ribbon */}
@@ -90,20 +94,20 @@ export default function ProductRecommendationCard({
         {/* affiliate CTAs */}
         <div className="mt-5 flex flex-wrap gap-2">
           <a
-            href={amazonSearchUrl}
+            href={priceHref}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored noopener noreferrer"
             className="btn-affiliate flex-1 min-w-[120px]"
           >
-            Check Price
+            {productUrl ? "Check price on Amazon" : "Check Price"}
           </a>
           <a
             href={amazonSearchUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored noopener noreferrer"
             className="btn inline-flex flex-1 min-w-[120px] items-center justify-center border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink hover:border-brand-blue hover:text-brand-blue"
           >
-            Compare Options
+            Compare similar
           </a>
         </div>
       </div>

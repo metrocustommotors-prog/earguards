@@ -9,6 +9,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import { pageMetadata } from "@/lib/seo";
+import RangeCardCallout from "@/components/RangeCardCallout";
 
 export const metadata = pageMetadata({
   title: "Best Ear Protection by Use Case (2026 Picks & Guides)",
@@ -165,6 +166,10 @@ export default function BestEarProtectionPage() {
               />
             ))}
         </div>
+      </section>
+
+      <section className="container-site pb-4">
+        <RangeCardCallout variant="home" />
       </section>
 
       <section className="container-site pb-16">
