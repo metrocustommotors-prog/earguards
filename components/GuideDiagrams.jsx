@@ -287,6 +287,131 @@ function MuffSeal() {
   );
 }
 
+function CabinTwoJobs() {
+  const jobs = [
+    {
+      title: "Pressure",
+      when: "Climb and descent",
+      tool: "A filtered plug that lets the ear catch up",
+      tone: "border-brand-blue/30 bg-brand-bluelight/50",
+    },
+    {
+      title: "Cabin noise",
+      when: "Cruise, for hours",
+      tool: "A seal — foam, flanges, or kids' muffs",
+      tone: "border-brand-orange/30 bg-brand-orangelight/60",
+    },
+  ];
+  return (
+    <Figure
+      labelledBy="diagram-cabin-two-jobs"
+      title="A flight asks ear protection to do two jobs"
+      caption="Pressure plugs use a small filter so the ear can equalize. Noise plugs seal. A long flight often needs both jobs, and a child who will not keep a plug seated is usually better in muffs sized for that head."
+    >
+      <div className="grid gap-4 sm:grid-cols-2">
+        {jobs.map((job) => (
+          <div key={job.title} className={`rounded-xl border p-4 ${job.tone}`}>
+            <p className="text-[11px] font-bold uppercase tracking-wide text-brand-slate">
+              {job.when}
+            </p>
+            <p className="mt-1 font-display text-lg font-extrabold text-brand-ink">
+              {job.title}
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-brand-slate">{job.tool}</p>
+          </div>
+        ))}
+      </div>
+      <svg
+        viewBox="0 0 640 64"
+        className="mt-4 hidden w-full sm:block"
+        role="img"
+        aria-label="Takeoff and landing are the pressure problem. Cruise is the noise problem."
+      >
+        <title>Pressure on climb and descent, noise on cruise</title>
+        <rect x="8" y="16" width="190" height="36" rx="8" fill="#EAF1FB" />
+        <text x="103" y="39" textAnchor="middle" fontSize="13" fontWeight="700" fill="#1559B5">
+          Climb / descent
+        </text>
+        <path d="M206 34h70" stroke="#F26A1B" strokeWidth="3" />
+        <path d="M268 28l12 6-12 6" fill="#F26A1B" />
+        <rect x="288" y="16" width="120" height="36" rx="8" fill="#FFF1E6" />
+        <text x="348" y="39" textAnchor="middle" fontSize="13" fontWeight="700" fill="#1A2230">
+          Cruise
+        </text>
+        <path d="M416 34h40" stroke="#5A6573" strokeWidth="3" />
+        <rect x="464" y="16" width="168" height="36" rx="8" fill="#1559B5" />
+        <text x="548" y="39" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">
+          Then descent again
+        </text>
+      </svg>
+    </Figure>
+  );
+}
+
+function FieldDouble() {
+  const rows = [
+    {
+      place: "Open country",
+      wear: "One electronic muff",
+      why: "You still need to hear movement. The shot is the short peak.",
+    },
+    {
+      place: "Blind, brake, or magnum",
+      wear: "Foam under the muff",
+      why: "The blast has nowhere to go. Do not add the two NRR numbers.",
+    },
+  ];
+  return (
+    <Figure
+      labelledBy="diagram-field-double"
+      title="When one protector is enough, and when it is not"
+      caption="Electronic muffs are for awareness between shots. They are not a higher seal than a passive muff. Indoors, or beside a muzzle brake, wear plugs underneath. The printable range card covers the same double-up rule."
+    >
+      <ul className="grid gap-3">
+        {rows.map((row) => (
+          <li
+            key={row.place}
+            className="grid gap-1 rounded-xl border border-brand-line bg-brand-mist/50 p-4 sm:grid-cols-[140px_1fr]"
+          >
+            <p className="font-display text-sm font-bold text-brand-blue">{row.place}</p>
+            <div>
+              <p className="font-display text-sm font-bold text-brand-ink">{row.wear}</p>
+              <p className="mt-1 text-xs leading-relaxed text-brand-slate">{row.why}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Figure>
+  );
+}
+
+function StageVsAudience() {
+  const seats = [
+    { seat: "Audience", cut: "About 15–20 dB flat", note: "Enough for most rooms if the filter is actually in." },
+    { seat: "Rehearsal", cut: "Stronger filter", note: "Small rooms and close amps raise the dose fast." },
+    { seat: "On stage", cut: "Strongest flat filter you can still tune with", note: "A wedge or a kit at ear level can be the loudest seat in the building." },
+  ];
+  return (
+    <Figure
+      labelledBy="diagram-stage-audience"
+      title="Stage, rehearsal, and the crowd are not the same dose"
+      caption="Flat filters turn the mix down. Foam blocks highs first, which is why pitch and speech go dull. Swap filters before you reach for foam, and keep foam for the night the level is painful."
+    >
+      <ol className="grid gap-3 sm:grid-cols-3">
+        {seats.map((seat, i) => (
+          <li key={seat.seat} className="rounded-xl border border-brand-line p-4">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-brand-slate">
+              {i + 1}. {seat.seat}
+            </p>
+            <p className="mt-2 font-display text-sm font-bold text-brand-ink">{seat.cut}</p>
+            <p className="mt-1 text-xs leading-relaxed text-brand-slate">{seat.note}</p>
+          </li>
+        ))}
+      </ol>
+    </Figure>
+  );
+}
+
 function PlugsVsMuffs() {
   return (
     <Figure
@@ -329,6 +454,9 @@ const diagrams = {
   attenuation: Attenuation,
   "muff-seal": MuffSeal,
   "plugs-muffs": PlugsVsMuffs,
+  "cabin-two-jobs": CabinTwoJobs,
+  "field-double": FieldDouble,
+  "stage-audience": StageVsAudience,
 };
 
 export default function GuideDiagram({ id }) {

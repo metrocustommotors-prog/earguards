@@ -21,7 +21,7 @@ export const metadata = pageMetadata({
 });
 
 const trustStats = [
-  { value: "10+", label: "In-depth buying guides" },
+  { value: "13", label: "In-depth guides" },
   { value: "30+", label: "Noise sources rated" },
   { value: "8", label: "Use-case categories" },
   { value: "85 dB", label: "Where damage begins" },
