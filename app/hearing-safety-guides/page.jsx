@@ -8,6 +8,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import MusicCardCallout from "@/components/MusicCardCallout";
 import EditorialCredit from "@/components/EditorialCredit";
 import { pageMetadata } from "@/lib/seo";
 
@@ -85,8 +86,9 @@ export default function HearingSafetyGuidesPage() {
           </div>
         </section>
 
-        <div className="mt-12">
+        <div className="mt-12 space-y-5">
           <RangeCardCallout variant="guides" />
+          <MusicCardCallout variant="guides" />
         </div>
 
         <div className="mt-12">

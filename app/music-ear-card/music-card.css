@@ -1,0 +1,107 @@
+/* Layout extras for the music counter card. Type, color, and print
+   rules live in the range card stylesheet so the two cards stay one family. */
+
+.nrr-card--music .nrr-card__title {
+  font-size: 6.55cqi;
+  line-height: 0.84;
+}
+
+.nrr-card--music .nrr-card__deck {
+  font-size: 1.62cqi;
+}
+
+.nrr-card--music .nrr-card__bar-copy {
+  font-size: 1.32cqi;
+  letter-spacing: 0.045em;
+}
+
+.nrr-card--music .nrr-card__section {
+  margin-top: 1.25cqi;
+  padding-top: 1.2cqi;
+}
+
+.nrr-card--music .nrr-card__section:first-of-type {
+  margin-top: 1.35cqi;
+}
+
+.nrr-card--music .nrr-card__h {
+  margin-bottom: 0.75cqi;
+}
+
+.nrr-card--music .nrr-card__type {
+  padding: 0.85cqi 1cqi 0.9cqi;
+}
+
+.nrr-card--music .nrr-card__type-name {
+  font-size: 2.25cqi;
+}
+
+.nrr-card--music .nrr-card__when {
+  margin-top: 0.6cqi;
+  padding-top: 0.5cqi;
+}
+
+.nrr-card__footer--music {
+  align-items: flex-end;
+  gap: 1.8cqi;
+  margin-top: 1.15cqi;
+  padding-top: 0.95cqi;
+}
+
+.nrr-card__foot-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nrr-card__urls {
+  margin: 0.7cqi 0 0.55cqi;
+  padding: 0;
+  list-style: none;
+}
+
+.nrr-card__urls li {
+  font-family: var(--nrr-display);
+  font-size: 1.12cqi;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.32;
+  text-transform: uppercase;
+}
+
+.nrr-card__urls a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nrr-card__urls span {
+  margin-right: 0.4em;
+  color: var(--nrr-orange);
+}
+
+.nrr-card__fine--left {
+  max-width: none;
+  text-align: left;
+}
+
+.nrr-card__qr {
+  flex: 0 0 auto;
+  width: 11cqi;
+  text-align: center;
+}
+
+.nrr-card__qr img {
+  display: block;
+  width: 11cqi;
+  height: 11cqi;
+  background: #fff;
+}
+
+.nrr-card__qr p {
+  margin: 0.28cqi 0 0;
+  font-family: var(--nrr-display);
+  font-size: 0.92cqi;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}

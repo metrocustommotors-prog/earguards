@@ -10,6 +10,7 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import { Icon } from "@/components/Icon";
 import { pageMetadata } from "@/lib/seo";
 import RangeCardCallout from "@/components/RangeCardCallout";
+import MusicCardCallout from "@/components/MusicCardCallout";
 
 export const metadata = pageMetadata({
   title: "Best Ear Protection by Use Case (2026 Picks & Guides)",
@@ -87,6 +88,21 @@ export default function BestEarProtectionPage() {
                     </p>
                   </div>
                 </div>
+                {c.slug === "concerts" && (
+                  <div className="border-b border-brand-line bg-brand-orangelight/40 px-5 py-3">
+                    <Link
+                      href="/music-ear-card"
+                      className="inline-flex items-center gap-1.5 font-display text-sm font-bold text-brand-orange hover:underline"
+                    >
+                      <Icon name="music" className="h-4 w-4" />
+                      Print the music counter card
+                    </Link>
+                    <p className="mt-1 text-xs leading-relaxed text-brand-ink/75">
+                      One page for venues, loud bars, rehearsal rooms, and demo
+                      rooms. Educational only — no products or prices.
+                    </p>
+                  </div>
+                )}
                 <div className="flex items-center justify-between p-5">
                   {guide ? (
                     <div>
@@ -168,8 +184,9 @@ export default function BestEarProtectionPage() {
         </div>
       </section>
 
-      <section className="container-site pb-4">
+      <section className="container-site space-y-5 pb-4">
         <RangeCardCallout variant="home" />
+        <MusicCardCallout variant="hub" />
       </section>
 
       <section className="container-site pb-16">
