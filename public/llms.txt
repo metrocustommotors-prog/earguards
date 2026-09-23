@@ -2,7 +2,7 @@
 
 > Practical guides and comparisons for choosing ear protection for work, sleep, shooting, concerts, and everyday noise.
 
-Ear Guards (EarGuards.com) publishes free buying guides and plain-English hearing-safety explainers. Some product links are Amazon Associates links (tag earguards-20). Range and hunting guidance is in the shooting guide. Concert and musician plugs are in the concerts guide. Travel plugs are in the sleeping guide. The site does not publish a separate flying guide.
+Ear Guards (EarGuards.com) publishes free buying guides and plain-English hearing-safety explainers. Some product links are Amazon Associates links (tag earguards-20).
 
 ## Start here
 
@@ -20,10 +20,13 @@ Ear Guards (EarGuards.com) publishes free buying guides and plain-English hearin
 
 ## Guides
 
-- [Best ear protection for shooting](https://earguards.com/blog/best-ear-protection-for-shooting): Electronic and passive options for ranges and hunting, and when to wear plugs under muffs indoors.
-- [Best ear protection for concerts](https://earguards.com/blog/best-ear-protection-for-concerts): High-fidelity plugs that lower concert volume without muffling the music, including options for musicians.
+- [Best ear protection for flying](https://earguards.com/blog/best-ear-protection-for-flying): Airplane plugs for cabin pressure on climb and descent, and for engine noise during cruise.
+- [Best ear protection for hunting](https://earguards.com/blog/best-ear-protection-for-hunting): Field protection that lets you hear the woods, then handles the shot. The shooting guide covers indoor ranges.
+- [Best ear protection for musicians](https://earguards.com/blog/best-ear-protection-for-musicians): Flat-filter plugs for practice and the stage, where the loud seat is often next to the source. The concerts guide covers the audience.
+- [Best ear protection for shooting](https://earguards.com/blog/best-ear-protection-for-shooting): Electronic and passive options for ranges, and when to wear plugs under muffs indoors.
+- [Best ear protection for concerts](https://earguards.com/blog/best-ear-protection-for-concerts): High-fidelity plugs that lower concert volume without muffling the music.
 - [Best ear protection for construction workers](https://earguards.com/blog/best-ear-protection-for-construction-workers): Job-site plugs and muffs, with NRR guidance by role and notes on all-day comfort.
-- [Best ear plugs for sleeping](https://earguards.com/blog/best-ear-plugs-for-sleeping): Foam, silicone, and reusable plugs for snoring, traffic, and side sleeping. Also the travel pick.
+- [Best ear plugs for sleeping](https://earguards.com/blog/best-ear-plugs-for-sleeping): Foam, silicone, and reusable plugs for snoring, traffic, and side sleeping.
 - [Best ear protection for kids](https://earguards.com/blog/best-ear-protection-for-kids): Age-sized earmuffs for babies, toddlers, and children at fireworks, events, and travel.
 - [Best ear protection for motorcycle riders](https://earguards.com/blog/best-ear-protection-for-motorcycle-riders): Low-profile plugs for wind noise inside a helmet, including options that keep traffic audible.
 - [Best ear protection for sensory sensitivity](https://earguards.com/blog/best-ear-protection-for-sensory-sensitivity): Comfort-first muffs and plugs for autism, ADHD, and sensory processing differences.
