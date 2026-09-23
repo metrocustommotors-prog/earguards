@@ -39,7 +39,7 @@ const categoryGuide = {
   kids: "best-ear-protection-for-kids",
   sensory: "best-ear-protection-for-sensory-sensitivity",
   motorsports: "best-ear-protection-for-motorcycle-riders",
-  travel: "best-ear-plugs-for-sleeping",
+  travel: "best-ear-protection-for-flying",
 };
 
 export default function BestEarProtectionPage() {
